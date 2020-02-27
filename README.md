@@ -1,2 +1,2 @@
 # Eagle
-Infosys Talent Transformation
+Infosys Talent Transformation Platform
