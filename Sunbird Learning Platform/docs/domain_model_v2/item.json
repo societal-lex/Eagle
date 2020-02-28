@@ -1,0 +1,55 @@
+{
+    "identifier": "", // Identifier
+    "name": "", // Name
+    "code": "", // Code
+    "title": "", // Title
+
+    // general
+    "template": "", // Template/Layout used to render this item
+    "type": "", // Type (Enum: embedded, mcq, mmcq, sort_list etc.)
+    "keywords": "", // Keywords
+    "body": "", // Question
+    "model": "", // Model
+    "options": "", // Options
+    "lhs_options": "", // LHS Options
+    "rhs_options": "", // RHS Options
+    "num_answers": 0, // Number of Answers
+    "answer": "", // Answer
+    "hints": "", // Hints
+    "qlevel": "", // Question Level (Enum: EASY, MEDIUM, DIFFICULT, RARE)
+    "depth_of_knowledge": "", // Depth of Knowledge (Enum: Recall, Skill, Strategic Thinking, Extended Thinking)
+    "used_for": "", // Used for (Enum: assessment, worksheet)
+    "max_score": 0, // Maximum possible score for this item
+    "partial_scoring": "", // Partial Scoring
+    "feedback": "", // Feedback
+    "max_time": 0, // Max Time
+    "gradeLevel": "", // Levels (Enum: "Kindergarten", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Other")
+    "rendering_metadata": "", // Rendering Metadata
+    "description": "", // Description
+    "learningObjective": "", // Learning Objective
+    "example": "", // Examples
+    "language": "", // Language
+
+    //audit
+    "versionCreatedBy": "", // Version Created By
+    "versionDate": "", // Version Date
+    "version": 0, // Version
+    "lastUpdatedOn": "", // Last Updated On
+    "lastUpdatedBy": "", // Last Updated By
+
+    // lifeCycle
+    "validators": "", // Validators
+    "status": "", // Status (Enum: Draft, Review, Live, Retired etc.)
+
+    // ownership
+    "owner": "", // Owner
+
+    // pedagogy
+    "purpose": "", // Purpose (Enum: Knowledge, Conceptual, Application, Problem Solving)
+
+    // usageMetadata
+    "references": "", // List of references
+
+    // Relations
+    "concepts": [ ], // Concept, Concepts associated with this item
+}
