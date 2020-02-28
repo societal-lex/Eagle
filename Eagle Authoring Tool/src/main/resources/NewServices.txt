@@ -1,0 +1,27 @@
+API Economy
+Business Process Management (Pega)
+Public Cloud workload migration (AWS + Azure) 
+Cyber Security
+Big Data and Analytics
+Data Monetization
+Digital Factory/ADS
+Internet of Things
+DevOps and Agile adoption in the enterprise
+Open Source Development and Migration 
+Workload Transformation for the Cloud 
+BI Modernization
+Mainframe Modernization
+ServiceNow ESM Cafe 
+Big Data Testing
+Mobility Testing
+HANA BI Migration and Simplification
+HCM Cloud - SuccessFactors 
+S/4 HANA Adoption & Landscape Transformation
+Salesforce.com / Net Suite 
+UX Transformation - SAP Fiori
+MS Dynamics - CRM 
+Oracle Cloud Ecosystem
+Oracle Edge 
+Oracle Industry solutions/Vertical Stacks
+Product Cost Optimization
+SDN - Software Defined Networks
