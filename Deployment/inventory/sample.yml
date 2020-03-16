@@ -1,0 +1,372 @@
+# Cassandra configuration
+enable_password_for_cassandra: "<If password is enabled for cassandra true, else false>"
+cassandra_host: "<cassandra hostname or ip address>"
+cassandra_port: "<Port on which cassadra is running>"
+cassandra_username: "<cassandra username>"
+cassandra_password: "<password if enabled, else an empty string>"
+
+# Cassandra keyspaces
+keyspace_bodhi: bodhi
+keyspace_sunbird: sunbird
+
+# Elasticsearch configuration
+is_es_on_https: "false"
+enable_password_for_elasticsearch: "<If password is enabled for cassandra true, else false>"
+elasticsearch_host: "<Hostname or IP address of elasticsearch>"
+elasticsearch_http_port: "<http port configured for elasticsearch>"
+elasticsearch_tcp_port: "<tcp port configured for elasticsearch>"
+elasticsearch_username: "<username for elasticsearch communication; empty string if no authentication is enabled>"
+elasticsearch_password: "<password of elasticsearch; empty string if no authentication is enabled>"
+elasticsearch_cluster_name: "<cluster name coonfigured on elasticsearch>"
+elasticsearch_contentindex_alias_name: mlsearch_*
+elasticsearch_contentindex_type: searchresources
+elasticsearch_http_hosts_list: "<If elastisearch is deployed as cluster hostname:port list, seperated by comma>"
+# Example:
+  # - 10.2.3.4:9200
+  # - 10.2.3.5:9200
+
+# Elasticsearch indices
+elasticsearch_search_index: socialsearch_en
+elasticsearch_thread_timeline_template: threadtemplate_v1
+elasticsearch_search_type: socialsearch
+elasticsearch_search_template: socialsearchtemplate_v1
+elasticsearch_content_search_index: mlsearch_*
+elasticsearch_content_search_type: searchresources
+
+# Postgresql
+postgresql_host: "<Hostname or IP address of postgresql>"
+postgresql_port: "<Port configured for postgresql>"
+postgresql_username_wingspan: "<username configured for wingspan db>"
+postgresql_password_wingspan: "<password for user who has access to wingspan db>"
+postgresql_username_keycloak: "<username configured for Keycloak db>"
+postgresql_password_keycloak: "<password for user who has access to keycloak db>"
+postgresql_wingspan_database: "<database name for wingspan>"
+
+# Mongodb
+mongodb_authentication_database: "" # Not being used, will be removed
+mongodb_host: "" # Not being used, will be removed
+mongodb_port: "" # Not being used, will be removed
+mongodb_user: "" # Not being used, will be removed
+mongodb_password: "" # Not being used, will be removed
+
+# Neo4j
+enable_password_for_neo4j: "false"
+neo4j_host: "<Hostname or IP address of Neo4J>"
+neo4j_port: "<Port configured for Neo4J>"
+neo4j_username: "<username for neo4j if configured; else empty string>"
+neo4j_password: "<password if configured; else empty string>"
+
+# Redis
+redis_db_password: "" # Not being used, will be removed
+
+# Kafka
+kafka_host: "<Hostname or IP address of Kafka>"
+kafka_port: "<Port configured for Kafka>"
+kafka_servers_list: "{{ kafka_host }}:{{ kafka_port }}"
+
+# Zookeeper details
+zookeeper_host: "<Hostname or IP address of Zookeeper>"
+zookeeper_port: "<Port configured for Zookeeper>"
+zookeeper_servers_list: "{{ zookeeper_host }}:{{ zookeeper_port }}"
+
+# SMTP Details
+smtp_host: "<hostname or ip address of SMTP server; empty string if not available>"
+smtp_port: "<port of SMTP server; empty string if not available>"
+
+# Docker hub details
+docker_hub_url: "<Docker repo URL from which images will be pulled>"
+
+# App Details
+app_server_host: "<app server IP of any one of manager node>"
+domain_name: "<domain name where application will be hosted>"
+auth_domain_name: "<authentication domain, where keycloak is hosted>" # If keycloak and app are running on same domain, values will be same
+
+# App variables
+keycloak_realm_name: "<realm name created on keycloak>"
+keycloak_client_id: "portal"
+keycloak_sso_realm: "master"
+keycloak_sso_admin_user: "<admin user who has create user permissions>"
+keycloak_sso_admin_user_password: "<password for admin user>"
+keycloak_username: "<admin user who has create user permissions>" # Repeated entry, will be deleted
+keycloak_password: "<password for admin user>" # "<admin user who has create user permissions>"
+keycloak_host: "<hostname or ip address of Keycloak server>" 
+keycloak_port: "<Port on which Keycloak is running>"
+keycloak_domain: "http://{{ keycloak_host }}:{{ keycloak_port }}/auth/"
+
+# Swarm variables
+var_docker_deploy_node_type: "<worker|manager>" # Depending on environemnt, you can select if you want to deploy app on manager or worker
+
+# ENV FILES BASE DIR
+env_files_dir: "<temporary location where env files will be saved>"
+
+# COMPOSE FILES DIR
+compose_files_dir: "<temporary location where compose files will be saved>"
+
+# Config files dir
+config_files_dir: "<temporary location where config files will be saved>"
+
+# Secret files dir
+docker_secret_files_dir: "<temporary location where secret files are expected to be>"
+
+# Shared env file names
+ui_shared_env_file_name: ui-shared
+
+# Memory types
+memory_t: 128M
+memory_xs: 256M
+memory_s: 512M
+memory_m: 1024M
+memory_l: 2048M
+memory_xl: 4096M
+
+# TAGS
+master_tag: "<tag for the docker images>"
+tags_ui_static: "{{ master_tag }}"
+tags_ui_proxies: "{{ master_tag }}"
+tags_content_service: "{{ master_tag }}"
+tags_authtool_ui_service: "{{ master_tag }}"
+tags_more_like_this_service: "{{ master_tag }}"
+tags_social_forum_service: "{{ master_tag }}"
+tags_sb_ext_service: "{{ master_tag }}"
+tags_sb_ext_authtool_service: "{{ master_tag }}"
+tags_lex_core_service: "{{ master_tag }}"
+tags_lex_core_critical_service: "{{ master_tag }}"
+tags_lex_core_cassandra_service: "{{ master_tag }}"
+tags_lex_core_lhub_service: "{{ master_tag }}"
+tags_lex_core_high_service: "{{ master_tag }}"
+tags_file_exhaust_service: "{{ master_tag }}"
+tags_common_authorization: "{{ master_tag }}"
+tags_bulk_upload_service: "{{ master_tag }}"
+tags_telemetry_service: "{{ master_tag }}"
+tags_antivirus_service: "{{ master_tag }}"
+tags_khub_migration_service: 1.1.1.39.hotfix
+tags_external_api_service: "{{ master_tag }}"
+tags_chatbot_service: "{{ master_tag }}"
+tags_monitoring_service: "{{ master_tag }}"
+tags_dbms_api_service: "{{ master_tag }}"
+tags_support_api_service: "{{ master_tag }}"
+tags_sb_telemetry_service: "{{ master_tag }}"
+tags_pid_service: "{{ master_tag }}"
+tags_notification_service: "{{ master_tag }}"
+tags_kafka_service: "{{ master_tag }}"
+
+# Service scale levels
+service_replicas_content_service: 1
+service_replicas_authtool_ui_service: 1
+service_replicas_ui_proxies_service: 1
+service_replicas_more_like_this_service: 1
+service_replicas_social_forum_service: 1
+service_replicas_sb_ext_service: 1
+service_replicas_sb_ext_authtool_service: 1
+service_replicas_lex_core_service: 1
+service_replicas_lex_core_high_service: 1
+service_replicas_lex_core_lhub_service: 1
+service_replicas_lex_core_cassandra_service: 1
+service_replicas_lex_core_critical_service: 1
+service_replicas_file_exhaust_service: 1
+service_replicas_common_authorization: 1
+service_replicas_bulk_upload_service: 1
+service_replicas_telemetry_service: 1
+service_replicas_antivirus_service: 1
+service_replicas_khub_migration_service: 1
+service_replicas_external_api_service: 1
+service_replicas_chatbot_service: 1
+service_replicas_monitoring_service: 1
+service_replicas_ui_static_service: 1
+service_replicas_dbms_api_service: 1
+service_replicas_support_api_service: 1
+service_replicas_sb_telemetry_service: 1
+service_replicas_pid_service: 1
+service_replicas_notification_service: 1
+service_replicas_kafka_service: 1
+
+# Memory reserves for each service
+service_mem_reserved_content_service: "{{ memory_m }}"
+service_mem_reserved_authtool_ui_service: "{{ memory_s }}"
+service_mem_reserved_ui_proxies_service: "{{ memory_s }}"
+service_mem_reserved_more_like_this_service: "{{ memory_xs }}"
+service_mem_reserved_social_forum_service: "{{ memory_xs }}"
+service_mem_reserved_sb_ext_service: "{{ memory_s }}"
+service_mem_reserved_sb_ext_authtool_service: "{{ memory_m }}"
+service_mem_reserved_lex_core_service: "{{ memory_s }}"
+service_mem_reserved_lex_core_critical_service: "{{ memory_s }}"
+service_mem_reserved_lex_core_cassandra_service: "{{ memory_s }}"
+service_mem_reserved_lex_core_lhub_service: "{{ memory_s }}"
+service_mem_reserved_lex_core_high_service: "{{ memory_s }}"
+service_mem_reserved_file_exhaust_service: "{{ memory_s }}"
+service_mem_reserved_common_authorization: "{{ memory_s }}"
+service_mem_reserved_bulk_upload_service: "{{ memory_s }}"
+service_mem_reserved_telemetry_service: "{{ memory_s }}"
+service_mem_reserved_antivirus_service: "{{ memory_s }}"
+service_mem_reserved_khub_migration_service: "{{ memory_s }}"
+service_mem_reserved_external_api_service: "{{ memory_s }}"
+service_mem_reserved_chatbot_service: "{{ memory_m }}"
+service_mem_reserved_monitoring_service: "{{ memory_t }}"
+service_mem_reserved_ui_static_service: "{{ memory_s }}"
+service_mem_reserved_dbms_api_service: "{{ memory_s }}"
+service_mem_reserved_support_api_service: "{{ memory_s }}"
+service_mem_reserved_sb_telemetry_service: "{{ memory_s }}"
+service_mem_reserved_pid_service: "{{ memory_s }}"
+service_mem_reserved_notification_service: "{{ memory_s }}"
+service_mem_reserved_kafka_service: "{{ memory_s }}"
+
+# Memory limits
+service_mem_limit_content_service: "{{ memory_l }}"
+service_mem_limit_authtool_ui_service: "{{ memory_m }}"
+service_mem_limit_ui_proxies_service: "{{ memory_m }}"
+service_mem_limit_more_like_this_service: "{{ memory_s }}"
+service_mem_limit_social_forum_service: "{{ memory_s }}"
+service_mem_limit_sb_ext_service: "{{ memory_l }}"
+service_mem_limit_sb_ext_authtool_service: "{{ memory_l }}"
+service_mem_limit_lex_core_service: "{{ memory_m }}"
+service_mem_limit_lex_core_critical_service: "{{ memory_m }}"
+service_mem_limit_lex_core_lhub_service: "{{ memory_m }}"
+service_mem_limit_lex_core_cassandra_service: "{{ memory_m }}"
+service_mem_limit_lex_core_high_service: "{{ memory_m }}"
+service_mem_limit_file_exhaust_service: "{{ memory_m }}"
+service_mem_limit_common_authorization: "{{ memory_m }}"
+service_mem_limit_bulk_upload_service: "{{ memory_m }}"
+service_mem_limit_telemetry_service: "{{ memory_m }}"
+service_mem_limit_antivirus_service: "{{ memory_l }}"
+service_mem_limit_khub_migration_service: "{{ memory_m }}"
+service_mem_limit_external_api_service: "{{ memory_m }}"
+service_mem_limit_chatbot_service: "{{ memory_xl }}"
+service_mem_limit_monitoring_service: "{{ memory_xs }}"
+service_mem_limit_ui_static_service: "{{ memory_m }}"
+service_mem_limit_dbms_api_service: "{{ memory_m }}"
+service_mem_limit_support_api_service: "{{ memory_s }}"
+service_mem_limit_sb_telemetry_service: "{{ memory_m }}"
+service_mem_limit_pid_service: "{{ memory_s }}"
+service_mem_limit_notification_service: "{{ memory_s }}"
+service_mem_limit_kafka_service: "{{ memory_s }}"
+
+# Force reload for app variables
+force_reload_content_service: false
+force_reload_authtool_ui_service: false
+force_reload_ui_proxies_service: true
+force_reload_more_like_this_service: false
+force_reload_social_forum_service: false
+force_reload_sb_ext_service: true
+force_reload_sb_ext_authtool_service: false
+force_reload_lex_core_service: true
+force_reload_lex_core_lhub_service: true
+force_reload_lex_core_cassandra_service: true
+force_reload_lex_core_critical_service: true
+force_reload_lex_core_high_service: true
+force_reload_file_exhaust_service: false
+force_reload_common_authorization: false
+force_reload_bulk_upload_service: false
+force_reload_telemetry_service: false
+force_reload_antivirus_service: false
+force_reload_khub_migration_service: false
+force_reload_external_api_service: false
+force_reload_chatbot_service: false
+force_reload_monitoring_service: false
+force_reload_ui_static_service: true
+force_reload_dbms_api_service: false
+force_reload_support_api_service: false
+force_reload_sb_telemetry_service: false
+force_reload_pid_service: false
+force_reload_notification_service: true
+force_reload_kafka_service: false
+
+
+publish_ports: true # true if you want apis to be exposed on ports, else false
+
+# External application details
+lex_microsoft_client_id: "" # Unused, will be removed
+lex_microsoft_client_secret: "" # Unused, will be removed
+
+### Service Level configurations ###
+base_mount_path: "<Docker mount path where some persistent file will be saved>"
+# Mount paths
+host_content_directory_path: "{{ base_mount_path }}/content-directory"
+
+# Logs
+sb_ext_logs_path: "{{ base_mount_path }}/logs/sb-ext"
+ui_proxies_logs_path: "{{ base_mount_path }}/logs/ui-proxies"
+bulk_upload_logs_path: "{{ base_mount_path }}/logs/bulk_upload_api"
+
+# Common for multiple services
+var_common_iap_base: "" # Unsed, will be removed
+var_common_root_org: "<Root org of application>" # Cannot be empty string, Not compliant, will be removed
+var_common_org: "<Org of application>" # Cannot be empty string, Not compliant, will be removed
+
+# For dbms api
+# D for Dev, S for staging, L for Live
+var_dbms_api_oracle_prefix_character: L # Cannot be empty string, Not compliant, will be removed
+
+# For lex core service
+# true - real-time progress is enabled, false real-time progress is not enabled
+var_lex_core_enable_realtime_progress: false
+# learning hub url, test/live url depending on the environment
+var_lex_core_learning_hub_url: "" # Unused, will be removed
+var_lex_core_learning_hub_certification_url: "" # Unused, will be removed
+var_lex_core_postgres_db_name: "<Wingspan databse name>"
+var_lex_core_enable_management_endpoints: "false"
+
+# For UI-shared variables
+var_ui_shared_la_host: "" # Unused, will be removed
+var_ui_shared_ilp_fp_host: "" # Unused, will be removed
+
+# For content service
+var_content_service_streaming_enabled_value: 1 # Make it 1 on all instances for now
+var_content_service_load_balancer_enabled_value: 0 # Make it 0 in all instances for now
+var_content_service_live_api_proxies_enabled_value: 0 # Should be 1 on Live
+var_content_service_stats_enabled_value: 0 # Should be one on Dev and Live
+var_content_service_should_antivirus_be_enabled: "true" # Make it true whereever antivirus is running
+var_content_service_public_content_enabled_value: 0 # Should be 1 in infytq(Dev and live)
+var_content_service_send_email_to_support: "true" # Make it true to send emails to support team for missing artifacts
+var_content_service_environment_name: "<Environment name>" # Required in include in the emails
+var_content_service_support_mail_id: "<Email id for support email, empty string if not SMTP server>"
+var_content_service_users_keyspace: sunbird
+var_content_service_logs_index_name_prefix: "<logs prefix name>"
+var_content_service_logs_type_name: nginx_logs
+var_content_service_logs_server_host: "<ES server where logs are forwarded>"
+var_content_service_logs_server_port: "<ES port for logs server>"
+var_content_service_stats_db_name: stats
+var_content_service_stats_collection_name: stats
+
+var_content_service_content_cdn : "<RootOrg1:Domain1;RootOrg2:Domain2>"
+var_content_service_images_cdn : "<RootOrg1:ImagesDomain1;RootOrg2:ImagesDomain2>"
+var_content_service_live_content_buckets : "<RootOrg1:live-content-bucket1;RootOrg2:live-content-bucket2>"
+var_content_service_live_image_buckets : "<RootOrg1:live-images-bucket1;RootOrg2:live-images-bucket2>"
+var_content_service_pre_publish_content_buckets : "<RootOrg1:pre-live-content-bucket1;RootOrg2:pre-live-content-bucket2>"
+var_content_service_pre_publish_image_buckets : "<RootOrg1:pre-live-images-bucket1;RootOrg2:pre-live-images-bucket2>"
+var_content_service_downloads_buckets : "<RootOrg1:downloads-bucket1;RootOrg2:downloads-bucket2>"
+
+# For sb-ext service
+var_sb_ext_service_enable_access_control: "true"
+
+# For sb-ext authtool service
+var_sb_ext_auth_kafka_offset_reset_config: latest
+
+# For monitoring service
+var_monitoring_service_cc_list: ""
+
+# Transcoding Server Config
+var_content_service_transcoding_server_ip: "<Transcoding server IP or hostname>"
+var_content_service_transcoding_server_port : "<Transcoding port>"
+
+# For telemetry service
+var_telemetry_kafka_topic: dev.telemetry.ingest
+
+# For pid service
+var_pid_service_pguser: "{{ postgresql_username_pid }}"
+
+# pghost be different for pid service, across the instances
+var_pid_service_pghost: "{{ postgresql_host }}"
+var_pid_service_password: "{{ postgresql_password_wingspan }}"
+var_pid_service_pgdatabase: "{{ postgresql_username_wingspan }}"
+var_pid_service_pgport: "{{ postgresql_port }}"
+var_pid_service_host: "{{ domain_name }}"
+
+# For bulk upload service
+var_bulk_upload_service_pid_client_id: "" # Unused, will be removed
+var_bulk_upload_service_pid_client_secret: "" # Unused, will be removed
+
+# For Kafka consumer service
+var_kafka_service_kafka_offset_reset_config: latest
+
+# For external API, will be removed later
+var_external_api_service_content_url_part: "" # Unused, will be removed
