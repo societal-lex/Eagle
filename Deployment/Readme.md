@@ -109,6 +109,8 @@ For serving the content, we need to create an origin with route /content-store a
 __Access Restriction__:
 Access for content-store prefix is acess restricted using the Signed Cookies of Cloudfront. The signed cookies are generated and sent in the response by content service when using the application.
 
+Same thing is also required from images as well. Where /content-store points to the Live images bucket.
+
 Hence S3 access is provided to only Cloudfront and Cloudfront access is agin provided to a Logged in user by the application.
 
 ![Application and content access](images/s3andcloudfront.png)
