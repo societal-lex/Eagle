@@ -71,3 +71,41 @@ __Inventory Structure__:
 
 __Roles__:
   Roles follow ansile playbook roles structure.
+
+### S3 Structure and configuration
+__Introduction__:
+Eagle uses Amazon S3 for storing it's content. Content on S3 refers to the physical files the authors create while creating the content on Eagle. The process of reading the file as input and storing it on S3 happen using the content service.
+
+The storage on S3 is broadly divided into 3 buckets.
+  <ol>
+    <li>Content bucket</li>
+    <ol>
+      <li>Pre-publish (authoring) bucket</li>
+      <li>Main (Live) bucket</li>
+    </ol>
+    <li>Images bucket</li>
+    <ol>
+      <li>Pre-publish (authoring) bucket</li>
+      <li>Main (Live) bucket</li>
+    </ol>
+    <li>Downloads bucket</li>
+  </ol>
+Images and Content bucket will have one bucket used for authoring and one for the Live content.
+Downloads bucket is one and content gets updated when there is a publish.
+
+Therefore at anytime, we have only one version on content which is Live.
+
+__Authorization and Access Control__:
+All the buckets created for Eagle are private and none of them will have public access. Direct availability of the data on these buckets will be only via Cloudfront. More on this will be available in the Cloudfront section.
+
+The CRUD activities on S3 happen through content service. Content service uses Node.js SDK to perform these operation. AWS SDK communication happens using the AWS Access Key and Secret Key. Refer this link to generate one [Get your AWS access key](https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/) and make sure this is kept safe in vault.
+
+### Cloudfront configuration
+__Introduction__:
+Cloudfront is configured to serve the UI of the application and the content of the application. For serving the UI, we create am origin with / as the root and make it point to the app servers.
+
+For serving the content, we need to create an origin with route /content-store and point it to Live content bucket.
+
+Access for content-store prefix is acess restricted using the Signed Cookies of Cloudfront. The signed cookies are generated and sent in the response by content service when using the application.
+
+Hence S3 access is provided to only Cloudfront and Cloudfront access is agin provided to a Logged in user by the application.
