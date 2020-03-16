@@ -102,10 +102,17 @@ The CRUD activities on S3 happen through content service. Content service uses N
 
 ### Cloudfront configuration
 __Introduction__:
-Cloudfront is configured to serve the UI of the application and the content of the application. For serving the UI, we create am origin with / as the root and make it point to the app servers.
+Cloudfront is configured to serve the UI of the application and the content of the application. For serving the UI, we create am origin with / as the root and make it point to the app servers, or load balancer.
 
 For serving the content, we need to create an origin with route /content-store and point it to Live content bucket.
 
+__Access Restriction__:
 Access for content-store prefix is acess restricted using the Signed Cookies of Cloudfront. The signed cookies are generated and sent in the response by content service when using the application.
 
 Hence S3 access is provided to only Cloudfront and Cloudfront access is agin provided to a Logged in user by the application.
+
+![Application and content access](images/s3andcloudfront.png)
+
+_Image: Application and content access via cloudfront_
+
+__Note__: In the process of adding the app as the origin, the apis will also now be served through cloudfront. This is not something we want for now and we need to add a behaviour as /api* and make sure you do not cache any api.
