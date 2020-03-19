@@ -1,0 +1,50 @@
+{
+  "askAuthor": {
+    "available": false,
+    "enabled": false
+  },
+  "contactUs": {
+    "available": false,
+    "enabled": false
+  },
+  "knowledgeBoard": {
+    "available": true,
+    "enabled": true
+  },
+  "kb_editor": {
+    "available": true,
+    "enabled": true
+  },
+  "LEARNING_ANALYTICS": {
+    "available": true,
+    "enabled": true
+  },
+  "my_skills": {
+    "available": true,
+    "enabled": true
+  },
+  "trainingLHub": {
+    "available": true,
+    "enabled": true
+  },
+  "certificationLHub": {
+    "available": true,
+    "enabled": true
+  },
+  "goals": {
+    "available": false,
+    "enabled": false
+  },
+  "interests": {
+    "available": true,
+    "enabled": true
+  },
+  "helpNavBarMenu": {
+    "available": true,
+    "enabled": true
+  },
+  "pinFeatures": {
+    "available": true,
+    "enabled": true
+  }
+}
