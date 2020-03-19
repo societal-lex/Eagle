@@ -12,7 +12,7 @@ The deployment of Sunbird is done in 3 modules. They are as follows
   2. Knowledge Platform
   3. Data Pipeline
 
-Eagle deployment uses the Knowledge Platform and Data Pipeline as-is, where as the core uses a different set of application deployments all together called as Eagle Core.
+Eagle deployment uses the Knowledge Platform and Data Pipeline as-is, where as the core uses a different set of application deployments all together called as Eagle Core. This is required along with the nginx and Keycloak deployment of Sunbird core.
 
 ### Prerequisites
   1. Operating System - Linux based: Preferably [Ubuntu](https://ubuntu.com/)
