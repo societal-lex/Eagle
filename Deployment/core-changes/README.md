@@ -111,7 +111,7 @@ The following changes need to be made on proxy_proxy service
   client-assets directory needs to be moved to the place where the static files are served from NGINX.
   Assuming that the location is on `/mydata/content-directory/`, the directory needs to be placed at `/mydata/content-directory/web-host/`
 
-  The directory here has configuration as per tenant. For your tenant to work, the configuration at [here](client-assets/assets/configuration/localhost_3000) should be renamed to your domain name.
+  The directory here has configuration as per tenant. For your tenant to work, the configuration at [here](client-assets/assets/configurations/localhost_3000) should be renamed to your domain name.
 
   __Example__: If eagle is deployed on a domain called https://my-eagle-deployment.com, the folder should be re-named to my-eagle-deployment.
 
