@@ -12,7 +12,26 @@ The following changes need to be made on proxy_proxy service
   ```
    location / {
     set $target http://ui-static:3004;
+
+  location /apis/ {
+    proxy_set_header X-Real-IP  $remote_addr;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Server $host;
+
+    proxy_cookie_path ~*^/.* /;
+
+    set $target http://lex-ui-proxies:9001;
+    rewrite ^/apis/(.*) /$1 break;
+    proxy_pass $target;
+
+    proxy_connect_timeout 10;
+    proxy_send_timeout 30;
+    proxy_read_timeout 30;
+  }
   ```
+
   2. UI requires some static assets which it picks up on page load. We add a new server block to serve static configurations.
   ```
   server {
