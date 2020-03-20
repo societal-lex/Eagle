@@ -12,24 +12,10 @@ The following changes need to be made on proxy_proxy service
   ```
    location / {
     set $target http://ui-static:3004;
+    .
+    .
 
-  location /apis/ {
-    proxy_set_header X-Real-IP  $remote_addr;
-    proxy_set_header X-Forwarded-For $remote_addr;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-Host $host;
-    proxy_set_header X-Forwarded-Server $host;
 
-    proxy_cookie_path ~*^/.* /;
-
-    set $target http://lex-ui-proxies:9001;
-    rewrite ^/apis/(.*) /$1 break;
-    proxy_pass $target;
-
-    proxy_connect_timeout 10;
-    proxy_send_timeout 30;
-    proxy_read_timeout 30;
-  }
   ```
 
   2. UI requires some static assets which it picks up on page load. We add a new server block to serve static configurations.
@@ -65,6 +51,26 @@ The following changes need to be made on proxy_proxy service
     proxy_read_timeout 30;
     proxy_set_header    X-Forwarded-Proto $scheme;
     root   /usr/share/nginx/www;
+  }
+  ```
+  4. API calls needs to be opened on NGINX which will check if the user is authenticated with Keycloak. We will add this block on server running on 443
+  ```
+  location /apis/ {
+    proxy_set_header X-Real-IP  $remote_addr;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Server $host;
+
+    proxy_cookie_path ~*^/.* /;
+
+    set $target http://lex-ui-proxies:9001;
+    rewrite ^/apis/(.*) /$1 break;
+    proxy_pass $target;
+
+    proxy_connect_timeout 10;
+    proxy_send_timeout 30;
+    proxy_read_timeout 30;
   }
   ```
   4. <b>stack-proxy.yml</b> file needs to add some an extra port for working with static server set at step 2 and mount path which will be setup for the static content. (Assuming the content directory is at /mydata/content-directory on the swarm machine)
@@ -132,6 +138,6 @@ The following changes need to be made on proxy_proxy service
 
   The directory here has configuration as per tenant. For your tenant to work, the configuration at [here](client-assets/assets/configurations/localhost_3000) should be renamed to your domain name.
 
-  __Example__: If eagle is deployed on a domain called https://my-eagle-deployment.com, the folder should be re-named to my-eagle-deployment.
+  __Example__: If eagle is deployed on a domain called https://my-eagle-deployment.com, the folder should be re-named to my-eagle-deployment and all occurances of locahost_3000 in all files in this directory must be replaced with my-eagle-deployment.com
 
   The configuration folder will have all features which can be enabled and disabled for each tenant. For a different tenant, a new folder with the domain name of the tenant should be placed at the same location.
